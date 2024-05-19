@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Singleton.dir/Program.cpp.o CMakeFiles/Singleton.dir/ConceptualExample01.cpp.o CMakeFiles/Singleton.dir/ConceptualExample02.cpp.o CMakeFiles/Singleton.dir/Singleton_vs_Dependency_Injection.cpp.o -o Singleton 
