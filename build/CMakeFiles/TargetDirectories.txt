@@ -1,0 +1,3 @@
+/home/dmitry/Документы/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/Singleton.dir
+/home/dmitry/Документы/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/edit_cache.dir
+/home/dmitry/Документы/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/rebuild_cache.dir
