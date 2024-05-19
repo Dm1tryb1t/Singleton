@@ -21,6 +21,6 @@ set(SOURCES
 # Add executable
 add_executable(Singleton ${SOURCES})
 
-# enable_testing()
+enable_testing()
 
-# add_subdirectory(tests)
+add_subdirectory(tests)
