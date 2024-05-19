@@ -10,11 +10,11 @@ namespace ConceptualExample01 {
 
     class Singleton final
     {
-    private:
+    public:
         static Singleton* m_instance;
         static std::mutex m_mutex;
 
-    private:
+    public:
         Singleton() = default;
 
         Singleton(const Singleton&) = delete;

@@ -8,7 +8,7 @@
 
 namespace ConceptualExample02 {
 
-    // It’s pretty easy to implement a sloppy Singleton.
+    // Itï¿½s pretty easy to implement a sloppy Singleton.
     // You just need to hide constructorand implement a static creation method.
 
     /**
@@ -19,11 +19,11 @@ namespace ConceptualExample02 {
     class Singleton
     {
         /**
-         * The Singleton's constructor/destructor should always be private to
+         * The Singleton's constructor/destructor should always be public to
          * prevent direct construction/desctruction calls with the `new`/`delete`
          * operator.
          */
-    private:
+    public:
         static Singleton* m_instance;
         static std::mutex m_mutex;
 

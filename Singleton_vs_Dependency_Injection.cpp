@@ -10,7 +10,7 @@ namespace SingletonLogger {
 
     class Logger final
     {
-    private:
+    public:
         Logger() = default;
 
         Logger(const Logger&) = delete;
@@ -117,7 +117,7 @@ namespace DependencyInjectionLogger {
             return {};
         }
 
-    private:
+    public:
         std::shared_ptr<ILoggingFacility> m_logger;
     };
 

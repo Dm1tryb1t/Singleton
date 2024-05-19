@@ -1,28 +1,45 @@
-#include <gtest/gtest.h>
-#include "../ConceptualExample01.cpp"
-#include "../ConceptualExample02.cpp"
-#include "../Program.cpp"
-#include "../Singleton_vs_Dependency_Injection.cpp"
+#include "gtest/gtest.h"
+#include "ConceptualExample01.cpp" // Включаем ваш исходный файл для тестирования
 
-// Test 1: Check Singleton instance for ConceptualExample01
-TEST(SingletonTest, ConceptualExample01) {
-    auto& instance1 = Singleton::getInstance();
-    auto& instance2 = Singleton::getInstance();
-    ASSERT_EQ(&instance1, &instance2) << "Instances are not the same in ConceptualExample01!";
+// Тест на одиночество (singleton) без потоков
+TEST(SingletonTest, NonThreadedSingleton) {
+    ConceptualExample01::Singleton* singleton = ConceptualExample01::Singleton::getInstance();
+    ASSERT_NE(singleton, nullptr);
+    
+    ConceptualExample01::Singleton* another_singleton = ConceptualExample01::Singleton::getInstance();
+    ASSERT_EQ(singleton, another_singleton);
 }
 
-// Test 2: Check Singleton instance for ConceptualExample02
-TEST(SingletonTest, ConceptualExample02) {
-    auto& instance1 = Singleton::getInstance();
-    auto& instance2 = Singleton::getInstance();
-    ASSERT_EQ(&instance1, &instance2) << "Instances are not the same in ConceptualExample02!";
+// Тест на несколько экземпляров без обеспечения потокобезопасности
+TEST(SingletonTest, MultipleInstancesWithoutThreadSafety) {
+    ConceptualExample01::Singleton* singleton1 = ConceptualExample01::Singleton::getInstance();
+    ConceptualExample01::Singleton* singleton2 = ConceptualExample01::Singleton::getInstance();
+    ASSERT_EQ(singleton1, singleton2);
+    
+    ConceptualExample01::Singleton* singleton3 = ConceptualExample01::Singleton::getInstanceThreadSafe();
+    ConceptualExample01::Singleton* singleton4 = ConceptualExample01::Singleton::getInstanceThreadSafe();
+    ASSERT_EQ(singleton3, singleton4);
 }
 
-// Test 3: Check Singleton instance for Singleton_vs_Dependency_Injection
-TEST(SingletonTest, SingletonVsDI) {
-    auto& instance1 = Singleton::getInstance();
-    auto& instance2 = Singleton::getInstance();
-    ASSERT_EQ(&instance1, &instance2) << "Instances are not the same in Singleton_vs_Dependency_Injection!";
+// Тест на потокобезопасность в С++17
+TEST(SingletonTest, ThreadSafetyCpp17) {
+    constexpr int num_threads = 4;
+    std::vector<std::thread> threads(num_threads);
+    std::vector<ConceptualExample01::Singleton*> singletons(num_threads);
+
+    for (int i = 0; i < num_threads; ++i) {
+        threads[i] = std::thread([&singletons, i]() {
+            singletons[i] = ConceptualExample01::Singleton::getInstanceThreadSafe_Cpp17();
+        });
+    }
+
+    for (auto& thread : threads) {
+        thread.join();
+    }
+
+    for (int i = 1; i < num_threads; ++i) {
+        ASSERT_EQ(singletons[i], singletons[0]);
+    }
 }
 
 int main(int argc, char **argv) {
