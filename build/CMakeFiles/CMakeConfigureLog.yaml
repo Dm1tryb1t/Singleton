@@ -529,3 +529,40 @@ events:
       
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.27/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/usr/share/cmake-3.27/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "build/_deps/googletest-src/googletest/cmake/internal_utils.cmake:65 (find_package)"
+      - "build/_deps/googletest-src/googletest/CMakeLists.txt:93 (config_compiler_and_linker)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/dmitry/\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/CMakeScratch/TryCompile-fPpNTN"
+      binary: "/home/dmitry/\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/CMakeScratch/TryCompile-fPpNTN"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/dmitry/Документы/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/CMakeScratch/TryCompile-fPpNTN'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b21f8/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b21f8.dir/build.make CMakeFiles/cmTC_b21f8.dir/build
+        gmake[1]: вход в каталог «/home/dmitry/Документы/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/CMakeScratch/TryCompile-fPpNTN»
+        Building C object CMakeFiles/cmTC_b21f8.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_b21f8.dir/src.c.o -c /home/dmitry/Документы/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/CMakeScratch/TryCompile-fPpNTN/src.c
+        Linking C executable cmTC_b21f8
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b21f8.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic CMakeFiles/cmTC_b21f8.dir/src.c.o -o cmTC_b21f8 
+        gmake[1]: выход из каталога «/home/dmitry/Документы/cpp_design_patterns/Patterns/Singleton/build/CMakeFiles/CMakeScratch/TryCompile-fPpNTN»
+        
+      exitCode: 0
+...
