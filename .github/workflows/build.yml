@@ -34,3 +34,9 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: ctest -C $BUILD_TYPE
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: build/Singleton
