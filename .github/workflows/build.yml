@@ -47,3 +47,5 @@ jobs:
       with:
         name: my-artifact
         path: build/tests/runTests
+- name: runTests
+run: ./build/tests/runTests
